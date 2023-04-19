@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ==========google font link================= -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Contact</title>
+</head>
+
+<body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .contact {
+            padding-inline: 15%;
+            background-color: #670000;
+            min-height: 100vh;
+            padding-bottom: 30px;
+            overflow: hidden;
+
+            text-align: center;
+        }
+
+        .c-inp1 {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .c-inp1 .inp {
+            width: 50%;
+
+        }
+
+        .c-inp1 .inp input {
+            width: 100%;
+            background-color: #670000;
+            padding: 15px 10px;
+            border: 1px solid #853023;
+            margin-bottom: 15px;
+            outline: none;
+            color: #FFEFAE;
+
+        }
+
+        .c-inp1 .inp input::placeholder {
+            color: #FFEFAE;
+            opacity: 0.9;
+
+        }
+
+        .contact form {
+            margin-top: 3rem;
+
+        }
+
+        .c-p {
+            margin-top: 3rem;
+            color: #FFEFAE;
+            letter-spacing: 1px;
+            font-size: 25px;
+
+        }
+
+        .c-submit {
+            width: 30%;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #FFEFAE;
+            border: none;
+            color: #670000;
+
+        }
+
+        .err {
+            display: none;
+        }
+
+        .social {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0px;
+            align-items: center;
+            width: 30%;
+            justify-content: space-between;
+        }
+
+        .s-box {
+            padding: 10px 15px;
+            background-color: #710202;
+
+        }
+
+        .s-box {
+            color: #FFEFAE;
+        }
+
+        @media only screen and (max-width:500px) {
+
+            .c-inp1 .inp {
+                width: 80%;
+            }
+
+            .contact {
+                padding: 0;
+            }
+        }
+    </style>
+
+    <div class="contact">
+
+        <p class="c-p">Sign up</p>
+
+        <form data-aos="fade-up" onsubmit="return validate()">
+            <div class="c-inp1">
+                <div class="inp">
+                    <input id="inp-n" type="text" placeholder="First Name">
+                    <p class="err" id="name-err">This Feild is Required</p>
+                </div>
+                <div class="inp">
+                    <input id="inp-s" type="text" placeholder="Last Name">
+                    <p class="err" id="sub-err">This Feild is Required</p>
+                </div>
+                <div class="inp">
+                    <input id="inp-e" type="text" placeholder="Email">
+                    <p class="err" id="email-err">This Feild is Required</p>
+                </div>
+                <div class="inp">
+                    <input id="inp-u" type="text" placeholder="Username">
+                    <p class="err" id="user-err">This Feild is Required</p>
+                </div>
+                <div class="inp">
+                    <input id="inp-p" type="text" placeholder="Password">
+                    <p class="err" id="pass-err">This Feild is Required</p>
+                </div>
+            </div>
+            <input class="c-submit" type="submit">
+        </form>
+
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 100,
+            duration: 500,
+            // delay:200
+        });
+
+    </script>
+    <script>
+
+        function validate() {
+
+            let name_val = document.getElementById("inp-n")
+            let mail_val = document.getElementById("inp-e")
+            let sub_val = document.getElementById("inp-s")
+            let pass_val = document.getElementById("inp-p")
+            let user_val = document.getElementById("inp-u")
+            let name_err = document.getElementById("name-err")
+            let mail_err = document.getElementById("email-err")
+            let pass_err = document.getElementById("pass-err")
+            let user_err = document.getElementById("user-err")
+            let sub_err = document.getElementById("sub-err")
+            let sub_msg = document.getElementById("final-sub")
+
+            let email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let pass_regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/
+
+            let flag = true;
+            if (name_val.value.trim() == "") {
+                name_err.style.display = "block";
+
+                flag = false;
+            }
+            else {
+                name_err.style.display = "none";
+
+            }
+
+            if (sub_val.value.trim() == "") {
+                sub_err.style.display = "block";
+                flag = false;
+            }
+            else {
+                sub_err.style.display = "none";
+            }
+            if (user_val.value.trim() == "") {
+                user_err.style.display = "block";
+                flag = false;
+            }
+            else if (user_val.value.length < 8 && user_val.value.length > 4) {
+                user_err.style.display = "none";
+            }
+
+
+            if (mail_val.value.trim() == "") {
+                mail_err.style.display = "block";
+                flag = false;
+            } else if (!mail_val.value.match(email_regex)) {
+                mail_err.style.display = "block";
+                flag = false;
+            }
+            else {
+                mail_err.style.display = "none";
+            }
+            if (pass_val.value.trim() == "") {
+                pass_err.style.display = "block";
+                flag = false;
+            } else if (!pass_val.value.match(pass_regex)) {
+                pass_err.style.display = "block";
+                flag = false;
+            }
+            else {
+                pass_err.style.display = "none";
+            }
+
+
+
+
+            console.log(flag)
+            return flag;
+        }
+
+    </script>
+</body>
+
+</html>
